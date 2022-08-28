@@ -1,0 +1,8 @@
+## Interface: 11200
+## Title: |cffff8000Grylls|rSwingTimer
+## Author: Grylls
+## Notes: SwingTimer (code from zUI)
+## Version: 1
+## SavedVariables: GryllsSwingTimer_Settings
+
+GryllsSwingTimer.lua
