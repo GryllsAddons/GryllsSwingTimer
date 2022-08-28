@@ -5,7 +5,7 @@ SwingTimer addon for World of Warcraft: Vanilla
 /gst or /gryllsswingtimer<br>
 
 ### Description:<br>
-zUI swing timer as a standalone addon with additional color themes.<br>
+This addon allows you to use the zUI swing timer as a standalone addon with additional color themes.<br>
 
 ### Usage:<br>
 /gst class - set class theme<br>
