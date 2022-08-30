@@ -18,10 +18,10 @@ This addon allows you to use the zUI swing timer as a standalone addon with addi
 
 ### Preview:
 Class theme<br>
-<img src="https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/GryllsSwingTimer/GST_Class.png" width=20% height=20%/><br>
+<img src="https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/GryllsSwingTimer/GST_Class.png" width=40% height=40%/><br>
 
 Light theme<br>
-<img src="https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/GryllsSwingTimer/GST_Light.png" width=20% height=20%/><br>
+<img src="https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/GryllsSwingTimer/GST_Light.png" width=40% height=40%/><br>
 
 Dark theme<br>
-<img src="https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/GryllsSwingTimer/GST_Dark.png" width=20% height=20%/><br>
+<img src="https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/GryllsSwingTimer/GST_Dark.png" width=40% height=40%/><br>
