@@ -87,9 +87,7 @@ end
 -- GryllsSwingTimer
 
 GryllsSwingTimer_Settings = {
-    r = 1,
-    g = 1,
-    b = 1,
+    theme = "light"
 }
 
 local GryllsSwingTimer = CreateFrame("Frame", nil, UIParent)
@@ -100,7 +98,7 @@ GryllsSwingTimer:SetScript("OnEvent", function()
     	SLASH_GRYLLSWINGTIMER2 = "/gst"
     	SlashCmdList["GRYLLSWINGTIMER"] = GryllsSwingTimer_commands
 
-		if not zUI.swingtimer then			
+		if not zUI.swingtimer then
 			zSwingTimer()
 			DEFAULT_CHAT_FRAME:AddMessage("|cffff8000Grylls|rSwingTimer loaded! /gst")
 			GryllsSwingTimer:SetScript('OnEvent', nil)
@@ -118,34 +116,37 @@ function GryllsSwingTimer_commands(msg, editbox)
         DEFAULT_CHAT_FRAME:AddMessage("|c"..yellow.."/gst light |r - set light theme")
         DEFAULT_CHAT_FRAME:AddMessage("|c"..yellow.."/gst dark |r - set dark theme")
 	elseif msg == "class" then
-        GryllsSwingTimer_theme("class")
+        GryllsSwingTimer_Settings.theme = "class"
         DEFAULT_CHAT_FRAME:AddMessage("|c"..orange.."Grylls|rSwingTimer: using class theme")
+		GryllsSwingTimer_setTheme()
     elseif msg == "light" then
-        GryllsSwingTimer_theme("light")
+        GryllsSwingTimer_Settings.theme = "light"
         DEFAULT_CHAT_FRAME:AddMessage("|c"..orange.."Grylls|rSwingTimer: using light theme")
+		GryllsSwingTimer_setTheme()
     elseif msg == "dark" then
-        GryllsSwingTimer_theme("dark")
+        GryllsSwingTimer_Settings.theme = "dark"
         DEFAULT_CHAT_FRAME:AddMessage("|c"..orange.."Grylls|rSwingTimer: using dark theme")
+		GryllsSwingTimer_setTheme()
     end
 end
 
-function GryllsSwingTimer_theme(theme)
-	if theme == "class" then
+function GryllsSwingTimer_setTheme()	
+	if GryllsSwingTimer_Settings.theme == "class" then
 		local _, CLASS = UnitClass("player")
 		if CLASS == "SHAMAN" then
-			GryllsSwingTimer_Settings.r, GryllsSwingTimer_Settings.g, GryllsSwingTimer_Settings.b = 0/255, 112/255, 221/255
+			GryllsSwingTimer.r, GryllsSwingTimer.g, GryllsSwingTimer.b = 0/255, 112/255, 221/255
 		else
 			local classcolor = RAID_CLASS_COLORS[CLASS]
-			GryllsSwingTimer_Settings.r, GryllsSwingTimer_Settings.g, GryllsSwingTimer_Settings.b = classcolor.r, classcolor.g, classcolor.b
+			GryllsSwingTimer.r, GryllsSwingTimer.g, GryllsSwingTimer.b = classcolor.r, classcolor.g, classcolor.b
 		end
-	elseif theme == "light" then
-		GryllsSwingTimer_Settings.r = 1
-		GryllsSwingTimer_Settings.g = 1
-		GryllsSwingTimer_Settings.b = 1
-	elseif theme == "dark" then
-		GryllsSwingTimer_Settings.r = 0.5
-		GryllsSwingTimer_Settings.g = 0.5
-		GryllsSwingTimer_Settings.b = 0.5
+	elseif GryllsSwingTimer_Settings.theme == "light" then
+		GryllsSwingTimer.r = 1
+		GryllsSwingTimer.g = 1
+		GryllsSwingTimer.b = 1
+	elseif GryllsSwingTimer_Settings.theme == "dark" then
+		GryllsSwingTimer.r = 0.5
+		GryllsSwingTimer.g = 0.5
+		GryllsSwingTimer.b = 0.5
 	end
 end
 
@@ -266,7 +267,7 @@ function zSwingTimer()
 				--
 			else
 				--SP_ST_FrameTime:SetTexture(1, 1, 1, 1)
-				SP_ST_FrameTime:SetTexture(GryllsSwingTimer_Settings.r, GryllsSwingTimer_Settings.g, GryllsSwingTimer_Settings.b, 1)
+				SP_ST_FrameTime:SetTexture(GryllsSwingTimer.r, GryllsSwingTimer.g, GryllsSwingTimer.b, 1)
 				
 				--SP_ST_FrameTime:SetTexture(strsplit(",", C.quality.swingtimer.color));
 				--this.healthbar.castbar:SetStatusBarColor(strsplit(",", C.nameplates.castbarcolor));
@@ -314,6 +315,7 @@ function zSwingTimer()
 	end
 
 	function zUI.swingtimer:UpdateAppearance()
+		GryllsSwingTimer_setTheme()
 		SP_ST_Frame:ClearAllPoints()
 		SP_ST_Frame:SetPoint("CENTER", "UIParent", "CENTER", SP_ST_GS["x"], SP_ST_GS["y"])
 
