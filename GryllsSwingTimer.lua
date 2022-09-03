@@ -100,6 +100,7 @@ GryllsSwingTimer:SetScript("OnEvent", function()
 
 		if not zUI.swingtimer then
 			zSwingTimer()
+			GryllsSwingTimer_setTheme()
 			DEFAULT_CHAT_FRAME:AddMessage("|cffff8000Grylls|rSwingTimer loaded! /gst")
 			GryllsSwingTimer:SetScript('OnEvent', nil)
 		end
