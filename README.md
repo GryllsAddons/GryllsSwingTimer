@@ -1,17 +1,13 @@
 # GryllsSwingTimer
-SwingTimer addon for World of Warcraft: Vanilla
+[zUI](https://github.com/Ko0z/zUI) swing timer as a standalone addon with additional color themes.<br>
 
 ### Credit:<br>
 Credit to [Ko0z](https://github.com/Ko0z)<br>
 Code from [zUI](https://github.com/Ko0z/zUI)<br>
 
-### Command:<br>
+### Commands:<br>
 /gst or /gryllsswingtimer<br>
-
-### Description:<br>
-[zUI](https://github.com/Ko0z/zUI) swing timer as a standalone addon with additional color themes.<br>
-
-### Usage:<br>
+<br>
 /gst class - set class theme<br>
 /gst light - set light theme<br>
 /gst dark - set dark theme<br>
