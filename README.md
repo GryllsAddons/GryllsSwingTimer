@@ -9,7 +9,7 @@ Code from [zUI](https://github.com/Ko0z/zUI)<br>
 /gst or /gryllsswingtimer<br>
 
 ### Description:<br>
-This addon allows you to use the zUI swing timer as a standalone addon with additional color themes.<br>
+[zUI](https://github.com/Ko0z/zUI) swing timer as a standalone addon with additional color themes.<br>
 
 ### Usage:<br>
 /gst class - set class theme<br>
