@@ -1,5 +1,6 @@
 # GryllsSwingTimer
-[zUI](https://github.com/Ko0z/zUI) swing timer as a standalone addon with additional color themes.<br>
+*[zUI](https://github.com/Ko0z/zUI) swing timer as a standalone addon with additional color themes.*     
+*Note: zUI timer is based on [SP_SwingTimer](https://github.com/EinBaum/SP_SwingTimer)*    
 
 ### Credit:<br>
 Credit to [Ko0z](https://github.com/Ko0z)<br>
