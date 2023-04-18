@@ -3,7 +3,7 @@
 *Note: zUI timer is based on [SP_SwingTimer](https://github.com/EinBaum/SP_SwingTimer)*    
 
 For an updated melee swing timer that supports Turtle WoW changes please see [SP_SwingTimer](https://github.com/geojak/SP_SwingTimer).    
-For Hunter auto shot timer please see [Quiver](https://github.com/SabineWren/Quiver/#auto-shot-castbar).
+For a Hunter auto shot timer please see [Quiver](https://github.com/SabineWren/Quiver/#auto-shot-castbar).
 
 ### Credit:<br>
 Credit to [Ko0z](https://github.com/Ko0z)<br>
