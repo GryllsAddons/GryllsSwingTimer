@@ -116,7 +116,7 @@ function GryllsSwingTimer_commands(msg, editbox)
 		DEFAULT_CHAT_FRAME:AddMessage("|c"..yellow.."/gst class |r - set class theme")
         DEFAULT_CHAT_FRAME:AddMessage("|c"..yellow.."/gst light |r - set light theme")
         DEFAULT_CHAT_FRAME:AddMessage("|c"..yellow.."/gst dark |r - set dark theme")
-		DEFAULT_CHAT_FRAME:AddMessage("|c"..yellow.."/gst move |r - toggle movable bar")
+		DEFAULT_CHAT_FRAME:AddMessage("|c"..yellow.."/gst move |r - toggle movable bar (hold shift & ctrl and drag to move)")
 		DEFAULT_CHAT_FRAME:AddMessage("|c"..yellow.."/gst reset |r - reset position")
 	elseif msg == "class" then
         GryllsSwingTimer_Settings.theme = "class"
