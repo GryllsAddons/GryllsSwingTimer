@@ -15,6 +15,8 @@ Code from [zUI](https://github.com/Ko0z/zUI)<br>
 /gst class - set class theme<br>
 /gst light - set light theme<br>
 /gst dark - set dark theme<br>
+/gst move - toggle movable bar<br>
+/gst reset - reset position<br>
 
 ### Preview:
 Class theme<br>
