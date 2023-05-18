@@ -116,6 +116,7 @@ function GryllsSwingTimer_commands(msg, editbox)
 		DEFAULT_CHAT_FRAME:AddMessage("|c"..yellow.."/gst class |r - set class theme")
         DEFAULT_CHAT_FRAME:AddMessage("|c"..yellow.."/gst light |r - set light theme")
         DEFAULT_CHAT_FRAME:AddMessage("|c"..yellow.."/gst dark |r - set dark theme")
+		DEFAULT_CHAT_FRAME:AddMessage("|c"..yellow.."/gst move |r - toggle movable bar")
 	elseif msg == "class" then
         GryllsSwingTimer_Settings.theme = "class"
         DEFAULT_CHAT_FRAME:AddMessage("|c"..orange.."Grylls|rSwingTimer: using class theme")
@@ -384,7 +385,6 @@ function zSwingTimer()
 	
 	SP_ST_Frame:SetScript("OnClick", function()
 		if (IsShiftKeyDown() and IsControlKeyDown()) then
-			DEFAULT_CHAT_FRAME:AddMessage("RESET")
 			SP_ST_Frame:SetUserPlaced(false)        
 			zUI.swingtimer:position()
 		end
