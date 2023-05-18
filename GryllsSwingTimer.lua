@@ -128,6 +128,15 @@ function GryllsSwingTimer_commands(msg, editbox)
         GryllsSwingTimer_Settings.theme = "dark"
         DEFAULT_CHAT_FRAME:AddMessage("|c"..orange.."Grylls|rSwingTimer: using dark theme")
 		GryllsSwingTimer_setTheme()
+	elseif msg == "move" then
+		if movable then
+			movable = nil
+			st_timer = 0
+		else
+			movable = true
+			zUI.swingtimer:ResetTimer()
+			st_timer = 60
+		end
     end
 end
 
@@ -151,6 +160,8 @@ function GryllsSwingTimer_setTheme()
 	end
 end
 
+local movable
+
 -- zSwingTimer
 function zSwingTimer()
 -- Credits to EinBaum, SP_SwingTimer
@@ -161,15 +172,14 @@ function zSwingTimer()
 	--local _, class = UnitClass("player")	
 	--if (C.quality.swingtimer.disable == "0" and class == "WARRIOR" or class == "SHAMAN" or class == "PALADIN" or class == "HUNTER" or C.quality.swingtimer.enable_for_all == "1") then
 
-	zUI.swingtimer = CreateFrame("Frame", "SP_ST_Frame", UIParent)
-	SP_ST_Frame:SetPoint(gst_p,gst_x,gst_y)
+	zUI.swingtimer = CreateFrame("Button", "SP_ST_Frame", UIParent)	
 	SP_ST_Frame:SetBackdrop({bgFile = "Interface/DialogFrame/UI-DialogBox-Background"})
 	SP_ST_Frame:SetWidth(gst_w);
 	SP_ST_Frame:SetHeight(gst_h);
 	SP_ST_Frame:Hide();
 	zSkin(SP_ST_Frame, 0);
 	zSkinColor(SP_ST_Frame, 0.4, 0.4, 0.4); -- border colour
-
+	
 	zUI.swingtimer.t = zUI.swingtimer:CreateTexture("SP_ST_FrameTime","ARTWORK")
 	--[[
 	SP_ST_FrameTime:SetPoint("CENTER",0,0)
@@ -317,8 +327,8 @@ function zSwingTimer()
 
 	function zUI.swingtimer:UpdateAppearance()
 		GryllsSwingTimer_setTheme()
-		SP_ST_Frame:ClearAllPoints()
-		SP_ST_Frame:SetPoint("CENTER", "UIParent", "CENTER", SP_ST_GS["x"], SP_ST_GS["y"])
+		-- SP_ST_Frame:ClearAllPoints()
+		-- SP_ST_Frame:SetPoint("CENTER", "UIParent", "CENTER", SP_ST_GS["x"], SP_ST_GS["y"])
 
 		SP_ST_FrameTime:ClearAllPoints()
 		local style = SP_ST_GS["style"]
@@ -347,6 +357,38 @@ function zSwingTimer()
 			end
 		end
 	end
+
+	function zUI.swingtimer:position()
+		SP_ST_Frame:ClearAllPoints()
+		SP_ST_Frame:SetPoint(gst_p,gst_x,gst_y)
+	end
+
+	zUI.swingtimer:position()
+
+	SP_ST_Frame:SetMovable(true)
+	SP_ST_Frame:SetClampedToScreen(true)
+	SP_ST_Frame:SetUserPlaced(true)
+	SP_ST_Frame:EnableMouse(true)
+	SP_ST_Frame:RegisterForClicks("RightButtonDown")
+	SP_ST_Frame:RegisterForDrag("LeftButton")	
+
+	SP_ST_Frame:SetScript("OnDragStart", function()
+		if (IsShiftKeyDown() and IsControlKeyDown()) then
+			SP_ST_Frame:StartMoving()
+		end
+	end)
+	
+	SP_ST_Frame:SetScript("OnDragStop", function()
+		SP_ST_Frame:StopMovingOrSizing()
+	end)
+	
+	SP_ST_Frame:SetScript("OnClick", function()
+		if (IsShiftKeyDown() and IsControlKeyDown()) then
+			DEFAULT_CHAT_FRAME:AddMessage("RESET")
+			SP_ST_Frame:SetUserPlaced(false)        
+			zUI.swingtimer:position()
+		end
+	end)	
 
 	--local function zUI.swingtimer:SplitString(s,t)
 	--	local l = {n=0}
