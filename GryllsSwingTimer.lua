@@ -107,6 +107,8 @@ GryllsSwingTimer:SetScript("OnEvent", function()
 	end
 end)
 
+local movable
+
 function GryllsSwingTimer_commands(msg, editbox)
     local yellow = "FFFFFF00"
     local orange = "FFFF9900"    
@@ -168,7 +170,6 @@ function GryllsSwingTimer_setTheme()
 	end
 end
 
-local movable
 
 -- zSwingTimer
 function zSwingTimer()
