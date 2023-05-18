@@ -117,6 +117,7 @@ function GryllsSwingTimer_commands(msg, editbox)
         DEFAULT_CHAT_FRAME:AddMessage("|c"..yellow.."/gst light |r - set light theme")
         DEFAULT_CHAT_FRAME:AddMessage("|c"..yellow.."/gst dark |r - set dark theme")
 		DEFAULT_CHAT_FRAME:AddMessage("|c"..yellow.."/gst move |r - toggle movable bar")
+		DEFAULT_CHAT_FRAME:AddMessage("|c"..yellow.."/gst reset |r - reset position")
 	elseif msg == "class" then
         GryllsSwingTimer_Settings.theme = "class"
         DEFAULT_CHAT_FRAME:AddMessage("|c"..orange.."Grylls|rSwingTimer: using class theme")
@@ -133,12 +134,18 @@ function GryllsSwingTimer_commands(msg, editbox)
 		if movable then
 			movable = nil
 			st_timer = 0
+			DEFAULT_CHAT_FRAME:AddMessage("|c"..orange.."Grylls|rSwingTimer: hiding bar")
 		else
 			movable = true
 			zUI.swingtimer:ResetTimer()
 			st_timer = 60
+			DEFAULT_CHAT_FRAME:AddMessage("|c"..orange.."Grylls|rSwingTimer: showing bar")
 		end
-    end
+	elseif msg == "reset" then
+		SP_ST_Frame:SetUserPlaced(false)        
+		zUI.swingtimer:position()
+		DEFAULT_CHAT_FRAME:AddMessage("|c"..orange.."Grylls|rSwingTimer: reset bar")		
+	end
 end
 
 function GryllsSwingTimer_setTheme()	
@@ -370,7 +377,6 @@ function zSwingTimer()
 	SP_ST_Frame:SetClampedToScreen(true)
 	SP_ST_Frame:SetUserPlaced(true)
 	SP_ST_Frame:EnableMouse(true)
-	SP_ST_Frame:RegisterForClicks("RightButtonDown")
 	SP_ST_Frame:RegisterForDrag("LeftButton")	
 
 	SP_ST_Frame:SetScript("OnDragStart", function()
@@ -382,13 +388,6 @@ function zSwingTimer()
 	SP_ST_Frame:SetScript("OnDragStop", function()
 		SP_ST_Frame:StopMovingOrSizing()
 	end)
-	
-	SP_ST_Frame:SetScript("OnClick", function()
-		if (IsShiftKeyDown() and IsControlKeyDown()) then
-			SP_ST_Frame:SetUserPlaced(false)        
-			zUI.swingtimer:position()
-		end
-	end)	
 
 	--local function zUI.swingtimer:SplitString(s,t)
 	--	local l = {n=0}
