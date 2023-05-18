@@ -116,7 +116,7 @@ function GryllsSwingTimer_commands(msg, editbox)
 		DEFAULT_CHAT_FRAME:AddMessage("|c"..yellow.."/gst class |r - set class theme")
         DEFAULT_CHAT_FRAME:AddMessage("|c"..yellow.."/gst light |r - set light theme")
         DEFAULT_CHAT_FRAME:AddMessage("|c"..yellow.."/gst dark |r - set dark theme")
-		DEFAULT_CHAT_FRAME:AddMessage("|c"..yellow.."/gst move |r - toggle movable bar (hold shift & ctrl and drag to move)")
+		DEFAULT_CHAT_FRAME:AddMessage("|c"..yellow.."/gst move |r - toggle movable bar")
 		DEFAULT_CHAT_FRAME:AddMessage("|c"..yellow.."/gst reset |r - reset position")
 	elseif msg == "class" then
         GryllsSwingTimer_Settings.theme = "class"
@@ -138,7 +138,7 @@ function GryllsSwingTimer_commands(msg, editbox)
 		else
 			movable = true
 			zUI.swingtimer:ResetTimer()
-			st_timer = 60
+			st_timer = 999
 			DEFAULT_CHAT_FRAME:AddMessage("|c"..orange.."Grylls|rSwingTimer: showing bar")
 		end
 	elseif msg == "reset" then
@@ -380,13 +380,15 @@ function zSwingTimer()
 	SP_ST_Frame:RegisterForDrag("LeftButton")	
 
 	SP_ST_Frame:SetScript("OnDragStart", function()
-		if (IsShiftKeyDown() and IsControlKeyDown()) then
+		if movable then
 			SP_ST_Frame:StartMoving()
 		end
 	end)
 	
 	SP_ST_Frame:SetScript("OnDragStop", function()
-		SP_ST_Frame:StopMovingOrSizing()
+		if movable then
+			SP_ST_Frame:StopMovingOrSizing()
+		end
 	end)
 
 	--local function zUI.swingtimer:SplitString(s,t)
