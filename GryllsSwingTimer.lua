@@ -231,11 +231,23 @@ function zSwingTimer()
 		SPELLIMMUNESELFOTHER,		-- Your %s failed. %s is immune.
 		SPELLLOGABSORBSELFOTHER,	-- Your %s is absorbed by %s.
 		SPELLREFLECTSELFOTHER,		-- Your %s is reflected back by %s.
-		SPELLRESISTSELFOTHER		-- Your %s was resisted by %s.
+		SPELLRESISTSELFOTHER,		-- Your %s was resisted by %s.
 	}
+
+	local hitStrings = {
+		COMBATHITSELFOTHER,         -- You hit %s for %d.
+		COMBATHITCRITSELFOTHER,     -- You crit %s for %d.
+	}
+
 	for index in combatStrings do
 		for _, pattern in {"%%s", "%%d"} do
 			combatStrings[index] = gsub(combatStrings[index], pattern, "(.*)")
+		end
+	end
+
+	for index in hitStrings do
+		for _, pattern in {"%%s", "%%d"} do
+			hitStrings[index] = gsub(hitStrings[index], pattern, "(.*)")
 		end
 	end
 
@@ -431,9 +443,11 @@ function zSwingTimer()
 				zUI.swingtimer:ResetTimer()
 			end
 		elseif (event == "CHAT_MSG_COMBAT_SELF_HITS") then
-			if (string.find(arg1, "You hit") or string.find(arg1, "You crit")) then
-				if (zUI.swingtimer:ShouldResetTimer()) then
-					zUI.swingtimer:ResetTimer()
+			for _, str in hitStrings do
+				if(string.find(arg1,str)) then
+					if (zUI.swingtimer:ShouldResetTimer()) then
+						zUI.swingtimer:ResetTimer()
+					end
 				end
 			end
 		elseif (event == "CHAT_MSG_SPELL_PERIODIC_SELF_BUFFS") then
@@ -449,7 +463,7 @@ function zSwingTimer()
 				end
 			end
 		elseif (event == "CHAT_MSG_COMBAT_CREATURE_VS_SELF_MISSES") then
-			if (string.find(arg1, ".* attacks. You parry.")) then
+			if (string.find(arg1, gsub(VSDODGEOTHERSELF, "%%s", "(.*)"))) then
 
 				local minimum = zUI.swingtimer:GetWeaponSpeed() * 0.20
 				if (st_timer > minimum) then
