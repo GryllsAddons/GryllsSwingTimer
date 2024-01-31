@@ -2,7 +2,7 @@
 *[zUI](https://github.com/Ko0z/zUI) melee swing timer as a standalone addon with additional color themes.*     
 *Note: zUI timer is based on [SP_SwingTimer](https://github.com/EinBaum/SP_SwingTimer)*    
 
-For an updated melee swing timer that supports Turtle WoW changes please see [SP_SwingTimer](https://github.com/geojak/SP_SwingTimer).    
+For an updated melee swing timer that supports Turtle WoW changes please see [SP_SwingTimer](https://github.com/balakethelock/SP_SwingTimer).    
 For a Hunter auto shot timer please see [Quiver](https://github.com/SabineWren/Quiver/#auto-shot-castbar).
 
 ### Credit:<br>
